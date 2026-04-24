@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARLIS/NA Executive Board Org Chart 2025-2026</title>
+</head>
+<body>
+
+<h2 class="sr-only">ARLIS/NA 2025-2026 Executive Board org chart final version</h2>
+<style>
+*{box-sizing:border-box}
+.org{padding:1.5rem 0 1rem;font-size:13px;color:var(--color-text-primary)}
+.role-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s;opacity:0;transform:translateY(12px)}
+.role-card.visible{opacity:1;transform:translateY(0);transition:border-color .15s,box-shadow .15s,opacity .45s ease,transform .45s ease}
+.role-card:hover{border-color:var(--color-border-primary);box-shadow:0 2px 8px rgba(0,0,0,0.07)}
+.role-card.president{border-top:3px solid #534AB7}
+.role-card.vp{border-top:3px solid #0F6E56}
+.role-card.officer{border-top:3px solid #378ADD}
+.role-card.liaison{border-top:3px solid #BA7517}
+.role-card.editorial{border-top:3px solid #D85A30}
+.role-card.mgmt{border-top:3px solid #888780}
+.card-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.role-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.role-avatar svg{width:20px;height:20px}
+.avatar-president{background:#EEEDFE}
+.avatar-vp{background:#E1F5EE}
+.avatar-officer{background:#E6F1FB}
+.avatar-liaison{background:#FAEEDA}
+.avatar-editorial{background:#FAECE7}
+.avatar-mgmt{background:#F1EFE8}
+.rtitle{font-size:15px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px}
+.rtitle-row{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap}
+.rsub{font-size:11px;color:var(--color-text-secondary);margin:0 0 6px;line-height:1.4}
+.stats{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.stat{font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.stat.purple{background:#EEEDFE;color:#3C3489}
+.stat.teal{background:#E1F5EE;color:#085041}
+.stat.blue{background:#E6F1FB;color:#0C447C}
+.stat.amber{background:#FAEEDA;color:#633806}
+.stat.coral{background:#FAECE7;color:#712B13}
+.stat.gray{background:#F1EFE8;color:#444441}
+.badge-elected{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:#E1F5EE;color:#085041;white-space:nowrap;border:0.5px solid #5DCAA5}
+.badge-appointed{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:#E6F1FB;color:#0C447C;white-space:nowrap;border:0.5px solid #85B7EB}
+.badge-continuity{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:#EEEDFE;color:#3C3489;white-space:nowrap;border:0.5px solid #AFA9EC}
+.people-badge{font-size:12px;font-weight:500;color:var(--color-text-secondary);white-space:nowrap;padding-left:6px;border-left:0.5px solid var(--color-border-secondary);margin-left:2px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.hline{height:0.5px;background:var(--color-border-secondary);margin:0 auto 10px}
+.vline{width:0.5px;background:var(--color-border-secondary);margin:0 auto;height:18px}
+.section-label{font-size:11px;color:var(--color-text-tertiary);text-align:center;letter-spacing:.06em;text-transform:uppercase;margin:4px 0 8px}
+.drawer{overflow:hidden;transition:max-height .4s ease,opacity .4s ease;max-height:0;opacity:0}
+.drawer.open{max-height:900px;opacity:1}
+.drawer-inner{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);margin-top:8px;padding:12px 14px}
+.drawer-inner h4{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em}
+.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
+.sub-item{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-secondary)}
+.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:5px}
+.chapter-pill{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--color-text-secondary);text-align:center}
+.chevron{display:inline-block;transition:transform .25s;font-size:10px;margin-left:4px;color:var(--color-text-tertiary)}
+.chevron.open{transform:rotate(180deg)}
+.cpac-note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;margin-top:3px}
+.people-viz{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px 20px;margin:0 0 12px}
+.people-viz-title{font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px;text-align:center}
+.figures-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin-bottom:14px}
+.fig-group{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:72px;max-width:100px}
+.fig-label{font-size:10px;color:var(--color-text-secondary);text-align:center;line-height:1.3}
+.fig-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:96px}
+.fig-icon{width:12px;height:18px;flex-shrink:0}
+.fig-count{font-size:18px;font-weight:500;color:var(--color-text-primary);line-height:1}
+.people-total-row{border-top:0.5px solid var(--color-border-tertiary);padding-top:10px;display:flex;justify-content:center;align-items:baseline;gap:8px;flex-wrap:wrap}
+.total-number{font-size:28px;font-weight:500;color:var(--color-text-primary);line-height:1}
+.total-label{font-size:12px;color:var(--color-text-secondary);max-width:280px;line-height:1.4}
+.membership-banner{display:flex;align-items:stretch;justify-content:center;gap:0;margin:0 auto 10px;max-width:580px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.mb-label{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;padding:10px 16px;border-right:0.5px solid var(--color-border-tertiary);white-space:nowrap;background:var(--color-background-secondary);min-width:100px}
+.mb-label-title{font-size:12px;font-weight:500;color:var(--color-text-primary)}
+.mb-label-count{font-size:20px;font-weight:500;color:var(--color-text-primary);line-height:1}
+.mb-label-sub{font-size:10px;color:var(--color-text-secondary)}
+.mb-items{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;align-items:center}
+.mb-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary);white-space:nowrap}
+.mb-divider{width:0.5px;height:16px;background:var(--color-border-tertiary);flex-shrink:0}
+.headline-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin:0 auto 14px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.headline-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 20px;border-right:0.5px solid var(--color-border-tertiary);flex:1;min-width:120px}
+.headline-item:last-child{border-right:none}
+.headline-num{font-size:26px;font-weight:500;color:var(--color-text-primary);line-height:1;margin-bottom:3px}
+.headline-label{font-size:11px;color:var(--color-text-secondary);text-align:center;line-height:1.3}
+.org-title{font-size:18px;font-weight:500;color:var(--color-text-primary);text-align:center;margin:0 0 4px}
+.org-subtitle{font-size:12px;color:var(--color-text-secondary);text-align:center;margin:0 0 14px}
+.color-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-bottom:12px;font-size:11px;color:var(--color-text-secondary)}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;flex-shrink:0}
+.legend-item{display:flex;align-items:center}
+</style>
+
+<div class="org">
+  <p class="org-title">ARLIS/NA Executive Board</p>
+  <p class="org-subtitle">Art Libraries Society of North America &middot; 2025&ndash;2026</p>
+
+  <div class="headline-strip">
+    <div class="headline-item">
+      <div style="width:40px;height:40px;border-radius:50%;background:#EEEDFE;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" fill="#534AB7"/><path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="17" cy="7" r="2.5" fill="#534AB7" opacity=".5"/><path d="M17 13c2.209 0 4 1.791 4 4" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".5"/></svg>
+      </div>
+      <span class="headline-num">793</span><span class="headline-label">members<br><span style="font-size:10px;color:var(--color-text-tertiary)">as of Apr 22, 2026</span></span>
+    </div>
+    <div class="headline-item">
+      <div style="width:40px;height:40px;border-radius:50%;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="7" r="2.5" fill="#0F6E56"/><path d="M2 18c0-3 2.5-5 6-5" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="16" cy="7" r="2.5" fill="#0F6E56"/><path d="M22 18c0-3-2.5-5-6-5" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M12 14c-2 0-3.5 1.5-3.5 3.5" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" fill="none"/><path d="M12 14c2 0 3.5 1.5 3.5 3.5" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="12" cy="9" r="2.5" fill="#0F6E56"/></svg>
+      </div>
+      <span class="headline-num">250</span><span class="headline-label">volunteers</span>
+    </div>
+    <div class="headline-item">
+      <div style="width:40px;height:40px;border-radius:50%;background:#E6F1FB;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="11" rx="2" fill="#378ADD" opacity=".2"/><path d="M3 10l9-7 9 7" stroke="#378ADD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="9" y="14" width="6" height="7" rx="1" fill="#378ADD"/></svg>
+      </div>
+      <span class="headline-num">17</span><span class="headline-label">chapters</span>
+    </div>
+    <div class="headline-item">
+      <div style="width:40px;height:40px;border-radius:50%;background:#FAECE7;display:flex;align-items:center;justify-content:center;margin:0 auto 8px">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="14" width="20" height="7" rx="2" fill="#D85A30" opacity=".2"/><path d="M12 3v11" stroke="#D85A30" stroke-width="1.8" stroke-linecap="round"/><path d="M8 7l4-4 4 4" stroke="#D85A30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="12" cy="14" r="2" fill="#D85A30"/></svg>
+      </div>
+      <span class="headline-num">1</span><span class="headline-label">annual conference</span>
+    </div>
+  </div>
+
+  <div class="membership-banner">
+    <div class="mb-label">
+      <span class="mb-label-title">Membership</span>
+      <span class="mb-label-count">793</span>
+      <span class="mb-label-sub">members</span>
+      <span style="font-size:10px;color:var(--color-text-tertiary);margin-top:2px">as of Apr 22, 2026</span>
+    </div>
+    <div class="mb-items">
+      <div class="mb-item"><span class="badge-elected">elected</span> voted in by membership</div>
+      <div class="mb-divider"></div>
+      <div class="mb-item"><span class="badge-appointed">appointed</span> appointed by the board</div>
+      <div class="mb-divider"></div>
+      <div class="mb-item"><span class="badge-continuity">continuity</span> serves by succession</div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;margin-bottom:0">
+    <div class="role-card president" style="min-width:200px;max-width:280px" onclick="toggle('president')">
+      <div class="card-header">
+        <div class="role-avatar avatar-president"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#534AB7"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">President</span><span class="badge-elected">elected</span><span class="chevron" id="chev-president">&#9662;</span></div>
+          <p class="rsub">Leadership, awards &amp; appointments</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat purple">8 committees</span><span class="people-badge">~73 people</span></div>
+      <div class="drawer" id="drawer-president">
+        <div class="drawer-inner">
+          <h4>Committees &amp; members</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Leadership Development<br><span style="font-size:11px;color:var(--color-text-tertiary)">7 people incl. chair</span></div>
+            <div class="sub-item">Awards<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair + 7 sub-chairs (11 people)</span></div>
+            <div class="sub-item">CPAC &mdash; current conference<br><span style="font-size:11px;color:var(--color-text-tertiary)">4 co-chairs, 26 people</span><p class="cpac-note">Conference Planning Advisory Committee</p></div>
+            <div class="sub-item">CPAC &mdash; next conference<br><span style="font-size:11px;color:var(--color-text-tertiary)">14 people total</span><p class="cpac-note">Conference Planning Advisory Committee</p></div>
+            <div class="sub-item">Anti-racism<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 5 members</span></div>
+            <div class="sub-item">Appointments<br><span style="font-size:11px;color:var(--color-text-tertiary)">e.g. affiliates</span></div>
+            <div class="sub-item">Finance Committee (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">ex-officio</span></div>
+            <div class="sub-item">CPAC (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">both current &amp; next conf.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vline"></div>
+  <div class="hline" style="width:78%"></div>
+  <div class="section-label">Executive officers</div>
+
+  <div class="row">
+    <div class="role-card vp" style="min-width:190px;max-width:240px" onclick="toggle('vp')">
+      <div class="card-header">
+        <div class="role-avatar avatar-vp"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#0F6E56"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#0F6E56" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Vice President</span><span class="badge-elected">elected</span><span class="chevron" id="chev-vp">&#9662;</span></div>
+          <p class="rsub">Divisions, sections &amp; SIGs</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat teal">35 groups &middot; 58 direct contacts</span><span class="stat teal">3 committees</span><span class="people-badge">~245 people</span></div>
+      <div class="drawer" id="drawer-vp">
+        <div class="drawer-inner">
+          <h4>35 groups &mdash; 58 direct moderators &amp; coordinators</h4>
+          <div class="sub-grid" style="margin-bottom:10px">
+            <div class="sub-item">Strategic Planning<br><span style="font-size:11px;color:var(--color-text-tertiary)">2 people</span></div>
+            <div class="sub-item">4 Divisions<br><span style="font-size:11px;color:var(--color-text-tertiary)">moderators</span></div>
+            <div class="sub-item">4 Sections<br><span style="font-size:11px;color:var(--color-text-tertiary)">moderators</span></div>
+            <div class="sub-item">26 SIGs<br><span style="font-size:11px;color:var(--color-text-tertiary)">coordinators</span></div>
+          </div>
+          <div style="font-size:11px;color:var(--color-text-secondary);background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;margin-bottom:10px">
+            58 direct contacts represent an estimated <strong>~245 individuals</strong> across all groups
+          </div>
+          <h4>Also appoints</h4>
+          <div class="sub-grid">
+            <div class="sub-item">13 Committee chairs/co-chairs<br><span style="font-size:11px;color:var(--color-text-tertiary)">up to 26 people</span></div>
+            <div class="sub-item">19 Affiliates<br><span style="font-size:11px;color:var(--color-text-tertiary)">for year of presidency</span></div>
+          </div>
+          <h4 style="margin-top:10px">Also serves on</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Finance Committee (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">ex-officio</span></div>
+            <div class="sub-item">CPAC (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">both current &amp; next conf.</span></div>
+            <div class="sub-item">Anti-racism Committee (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">board representative</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card president" style="min-width:155px;max-width:200px" onclick="toggle('pastpres')">
+      <div class="card-header">
+        <div class="role-avatar avatar-president"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#534AB7"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#534AB7" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Past President</span><span class="badge-continuity">continuity</span><span class="chevron" id="chev-pastpres">&#9662;</span></div>
+          <p class="rsub">Assures continuity &amp; grants</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat purple">3 committees</span><span class="people-badge">~10 people</span></div>
+      <div class="drawer" id="drawer-pastpres">
+        <div class="drawer-inner">
+          <h4>Committees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Development (member)</div>
+            <div class="sub-item">Finance Committee (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">ex-officio</span></div>
+            <div class="sub-item">CPAC (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">both current &amp; next conf.</span></div>
+          </div>
+          <h4 style="margin-top:10px">Also oversees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Grants</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card officer" style="min-width:155px;max-width:200px" onclick="toggle('treasurer')">
+      <div class="card-header">
+        <div class="role-avatar avatar-officer"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#378ADD"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#378ADD" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Treasurer</span><span class="badge-elected">elected</span><span class="chevron" id="chev-treasurer">&#9662;</span></div>
+          <p class="rsub">Finance &amp; development</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat blue">3 committees</span><span class="people-badge">~18 people</span></div>
+      <div class="drawer" id="drawer-treasurer">
+        <div class="drawer-inner">
+          <h4>Committees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Finance Committee</div>
+            <div class="sub-item">Development Committee</div>
+            <div class="sub-item">CPAC (member)<br><span style="font-size:11px;color:var(--color-text-tertiary)">both current &amp; next conf.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card officer" style="min-width:155px;max-width:200px" onclick="toggle('secretary')">
+      <div class="card-header">
+        <div class="role-avatar avatar-officer"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#378ADD"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#378ADD" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Secretary</span><span class="badge-elected">elected</span><span class="chevron" id="chev-secretary">&#9662;</span></div>
+          <p class="rsub">Cataloging &amp; documentation</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat blue">2 committees</span><span class="people-badge">~18 people</span></div>
+      <div class="drawer" id="drawer-secretary">
+        <div class="drawer-inner">
+          <h4>Committees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Cataloging Advisory</div>
+            <div class="sub-item">Documentation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="people-viz">
+    <p class="people-viz-title">People engaged across the organization</p>
+    <div class="color-legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#534AB7"></span>President &amp; Past President</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#0F6E56"></span>Vice President groups</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#378ADD"></span>Treasurer &amp; Secretary</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#BA7517"></span>Liaisons</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#D85A30"></span>Editorial Director</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#888780"></span>Management</div>
+    </div>
+    <div class="figures-wrap" id="figures-wrap"></div>
+    <div class="people-total-row">
+      <span class="total-number">250</span>
+      <span class="total-label">volunteers engaged across the organization<br><span style="font-size:11px;color:var(--color-text-tertiary)">plus 773 chapter members &amp; ~245 individuals through VP divisions, sections &amp; SIGs</span></span>
+    </div>
+  </div>
+
+  <div class="hline" style="width:90%"></div>
+  <div class="section-label">Liaisons &amp; directors</div>
+
+  <div class="row">
+    <div class="role-card liaison" style="min-width:150px;max-width:195px" onclick="toggle('education')">
+      <div class="card-header">
+        <div class="role-avatar avatar-liaison"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#BA7517"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#BA7517" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Education Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-education">&#9662;</span></div>
+          <p class="rsub">Professional development</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat amber">4 committees</span><span class="people-badge">~6 people</span></div>
+      <div class="drawer" id="drawer-education">
+        <div class="drawer-inner">
+          <h4>Committees &amp; subcommittees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">SEI</div>
+            <div class="sub-item">Professional Development</div>
+            <div class="sub-item">Education Subcommittee</div>
+            <div class="sub-item">Mentoring Subcommittee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card liaison" style="min-width:150px;max-width:195px" onclick="toggle('advancement')">
+      <div class="card-header">
+        <div class="role-avatar avatar-liaison"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#BA7517"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#BA7517" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Advancement Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-advancement">&#9662;</span></div>
+          <p class="rsub">Diversity &amp; membership</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat amber">2 committees</span><span class="people-badge">~13 people</span></div>
+      <div class="drawer" id="drawer-advancement">
+        <div class="drawer-inner">
+          <h4>Committees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Diversity &amp; Inclusion<br><span style="font-size:11px;color:var(--color-text-tertiary)">2 chairs, 5 members</span></div>
+            <div class="sub-item">Membership<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 5 members</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card liaison" style="min-width:150px;max-width:195px" onclick="toggle('canadian')">
+      <div class="card-header">
+        <div class="role-avatar avatar-liaison"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#BA7517"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#BA7517" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Canadian Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-canadian">&#9662;</span></div>
+          <p class="rsub">Policy &amp; international</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat amber">3 committees</span><span class="people-badge">~19 people</span></div>
+      <div class="drawer" id="drawer-canadian">
+        <div class="drawer-inner">
+          <h4>Committees</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Advocacy &amp; Public Policy<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 4 members</span></div>
+            <div class="sub-item">International Relations<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 7 members</span></div>
+            <div class="sub-item">Melva Dwyer Award<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 5 members</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card editorial" style="min-width:150px;max-width:195px" onclick="toggle('editorial')">
+      <div class="card-header">
+        <div class="role-avatar avatar-editorial"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#D85A30"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#D85A30" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Editorial Director</span><span class="badge-appointed">appointed</span><span class="chevron" id="chev-editorial">&#9662;</span></div>
+          <p class="rsub">Publications &amp; reviews</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat coral">9 publications</span><span class="people-badge">~19 people</span></div>
+      <div class="drawer" id="drawer-editorial">
+        <div class="drawer-inner">
+          <h4>Publications</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Editorial Board</div>
+            <div class="sub-item">Art Documentation</div>
+            <div class="sub-item">ARLIS/NA Reviews</div>
+            <div class="sub-item">Digital Art History Directory</div>
+            <div class="sub-item">Library Exhibitions Review</div>
+            <div class="sub-item">Multimedia &amp; Technology Reviews</div>
+            <div class="sub-item">Notable Graphic Novels Review</div>
+            <div class="sub-item">ARLIS-L</div>
+            <div class="sub-item">ARLIS/NA Commons</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="role-card liaison" style="min-width:160px;max-width:210px" onclick="toggle('chapters')">
+      <div class="card-header">
+        <div class="role-avatar avatar-liaison"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="#BA7517"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="#BA7517" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Chapters Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-chapters">&#9662;</span></div>
+          <p class="rsub">17 chapters + annual meetings</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat amber">17 chapter chairs</span><span class="people-badge">790 members</span></div>
+      <div class="drawer" id="drawer-chapters">
+        <div class="drawer-inner">
+          <h4>All 17 chapters</h4>
+          <div class="chapter-grid">
+            <div class="chapter-pill">Canada</div><div class="chapter-pill">MOQ</div>
+            <div class="chapter-pill">Ontario</div><div class="chapter-pill">Northwest</div>
+            <div class="chapter-pill">N. California</div><div class="chapter-pill">S. California</div>
+            <div class="chapter-pill">Mountain West</div><div class="chapter-pill">Central Plains</div>
+            <div class="chapter-pill">Mid-States</div><div class="chapter-pill">Ohio Valley</div>
+            <div class="chapter-pill">Twin Cities</div><div class="chapter-pill">New England</div>
+            <div class="chapter-pill">New York</div><div class="chapter-pill">Upstate New York</div>
+            <div class="chapter-pill">Mid-Atlantic</div><div class="chapter-pill">Southeast</div>
+            <div class="chapter-pill">Texas-Mexico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hline" style="width:28%"></div>
+  <div class="section-label">Management</div>
+  <div style="display:flex;justify-content:center">
+    <div class="role-card mgmt" style="min-width:200px;max-width:280px" onclick="toggle('mgmt')">
+      <div class="card-header">
+        <div class="role-avatar avatar-mgmt"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="11" rx="2" fill="#888780" opacity=".3"/><path d="M3 10l9-7 9 7" stroke="#888780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><rect x="9" y="14" width="6" height="7" rx="1" fill="#888780"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div class="rtitle-row"><span class="rtitle">Management</span><span class="chevron" id="chev-mgmt">&#9662;</span></div>
+          <p class="rsub">Barcami Lane, Inc. &mdash; contracted management</p>
+        </div>
+      </div>
+      <div class="stats"><span class="stat gray">4 staff</span><span class="people-badge">1,900 hrs/yr</span></div>
+      <div class="drawer" id="drawer-mgmt">
+        <div class="drawer-inner">
+          <h4>Staff</h4>
+          <div class="sub-grid">
+            <div class="sub-item">Amy Stark</div>
+            <div class="sub-item">Megan Brouwer</div>
+            <div class="sub-item">Emily Clifford</div>
+            <div class="sub-item">LeighAnn Sciacca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const groups = [
+  { label: 'President committees', count: 73, color: '#534AB7', approx: true },
+  { label: 'VP &mdash; direct contacts', count: 58, color: '#0F6E56', note: '~245 individuals across all groups', approx: false },
+  { label: 'Past President', count: 10, color: '#534AB7', approx: true },
+  { label: 'Treasurer', count: 18, color: '#378ADD', approx: true },
+  { label: 'Secretary', count: 18, color: '#378ADD', approx: true },
+  { label: 'Education Liaison', count: 6, color: '#BA7517', approx: true },
+  { label: 'Advancement Liaison', count: 13, color: '#BA7517', approx: true },
+  { label: 'Canadian Liaison', count: 19, color: '#BA7517', approx: true },
+  { label: 'Editorial Director', count: 19, color: '#D85A30', approx: true },
+  { label: 'Chapters Liaison', count: 17, color: '#BA7517', note: '+ 793 chapter members', approx: false },
+  { label: 'Management', count: 4, color: '#888780', approx: false },
+];
+
+function personSVG(color) {
+  return `<svg class="fig-icon" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="6" cy="4.5" r="3" fill="${color}" opacity="0.85"/>
+    <path d="M1 16c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="${color}" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.85"/>
+  </svg>`;
+}
+
+function buildViz() {
+  const wrap = document.getElementById('figures-wrap');
+  groups.forEach(g => {
+    const grp = document.createElement('div');
+    grp.className = 'fig-group';
+    const iconsDiv = document.createElement('div');
+    iconsDiv.className = 'fig-icons';
+    const display = Math.min(g.count, 20);
+    for (let i = 0; i < display; i++) iconsDiv.innerHTML += personSVG(g.color);
+    if (g.count > 20) {
+      const more = document.createElement('div');
+      more.style.cssText = 'font-size:10px;color:var(--color-text-tertiary);width:100%;text-align:center;margin-top:1px';
+      more.textContent = '+' + (g.count - 20) + ' more';
+      iconsDiv.appendChild(more);
+    }
+    const countEl = document.createElement('div');
+    countEl.className = 'fig-count';
+    countEl.textContent = (g.approx ? '~' : '') + g.count;
+    const labelEl = document.createElement('div');
+    labelEl.className = 'fig-label';
+    labelEl.textContent = g.label;
+    grp.appendChild(iconsDiv);
+    grp.appendChild(countEl);
+    grp.appendChild(labelEl);
+    if (g.note) {
+      const noteEl = document.createElement('div');
+      noteEl.style.cssText = 'font-size:10px;color:var(--color-text-tertiary);text-align:center;line-height:1.3;margin-top:1px';
+      noteEl.textContent = g.note;
+      grp.appendChild(noteEl);
+    }
+    wrap.appendChild(grp);
+  });
+}
+
+function toggle(id) {
+  const drawer = document.getElementById('drawer-' + id);
+  const chev = document.getElementById('chev-' + id);
+  const isOpen = drawer.classList.contains('open');
+  drawer.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
+
+buildViz();
+
+// Stagger fade-in: reveal cards tier by tier on load
+const tiers = [
+  '.headline-strip, .membership-banner',
+  '.role-card.president:first-of-type',
+  '.role-card.vp, .role-card.president + .role-card, .role-card.officer',
+  '.people-viz',
+  '.role-card.liaison, .role-card.editorial',
+];
+
+function revealTier(index) {
+  if (index >= tiers.length) return;
+  const cards = document.querySelectorAll(tiers[index]);
+  cards.forEach(el => el.classList.add('visible'));
+  setTimeout(() => revealTier(index + 1), 200);
+}
+
+// Also make non-card elements (headline, banner, people-viz) animate in
+document.querySelectorAll('.headline-strip, .membership-banner, .people-viz').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(12px)';
+  el.style.transition = 'opacity .45s ease, transform .45s ease';
+});
+
+setTimeout(() => {
+  document.querySelectorAll('.headline-strip, .membership-banner').forEach(el => {
+    el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.role-card').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    });
+    setTimeout(() => {
+      const pv = document.querySelector('.people-viz');
+      if (pv) { pv.style.opacity = '1'; pv.style.transform = 'translateY(0)'; }
+    }, 400);
+  }, 250);
+}, 100);
+</script>
+
+</body>
+</html>
