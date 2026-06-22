@@ -1,398 +1,218 @@
 
-<h2 class="sr-only">ARLIS/NA 2026 Org Chart</h2>
+<h2 class="sr-only">ARLIS/NA 54-year conference history showing annual attendance and membership from 1972 to 2026</h2>
 <style>
 *{box-sizing:border-box}
-.org{padding:1.5rem 0 1rem;font-size:13px;color:var(--color-text-primary)}
-.role-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:10px 14px;cursor:pointer;transition:border-color .15s}
-.role-card:hover{border-color:var(--color-border-primary)}
-.role-card.president{border-top:2px solid #534AB7}
-.role-card.vp{border-top:2px solid #0F6E56}
-.role-card.officer{border-top:2px solid #378ADD}
-.role-card.liaison{border-top:2px solid #BA7517}
-.role-card.editorial{border-top:2px solid #D85A30}
-.role-card.mgmt{border-top:2px solid #888780}
-.rtitle{font-size:14px;font-weight:500;color:var(--color-text-primary);margin:0 0 3px}
-.rtitle-row{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap}
-.rsub{font-size:11px;color:var(--color-text-secondary);margin:0 0 6px;line-height:1.4}
-.stats{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:4px}
-.stat{font-size:11px;font-weight:500;padding:2px 7px;border-radius:20px;white-space:nowrap}
-.stat.purple{background:#EEEDFE;color:#3C3489}
-.stat.teal{background:#E1F5EE;color:#085041}
-.stat.blue{background:#E6F1FB;color:#0C447C}
-.stat.amber{background:#FAEEDA;color:#633806}
-.stat.coral{background:#FAECE7;color:#712B13}
-.stat.gray{background:#F1EFE8;color:#444441}
-.badge-elected{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:#E1F5EE;color:#085041;white-space:nowrap;border:0.5px solid #5DCAA5}
-.badge-appointed{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:#E6F1FB;color:#0C447C;white-space:nowrap;border:0.5px solid #85B7EB}
-.badge-continuity{font-size:10px;font-weight:500;padding:1px 6px;border-radius:20px;background:#EEEDFE;color:#3C3489;white-space:nowrap;border:0.5px solid #AFA9EC}
-.people-badge{font-size:12px;font-weight:500;color:var(--color-text-secondary);white-space:nowrap;padding-left:6px;border-left:0.5px solid var(--color-border-secondary);margin-left:2px}
-.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
-.hline{height:0.5px;background:var(--color-border-secondary);margin:0 auto 10px}
-.vline{width:0.5px;background:var(--color-border-secondary);margin:0 auto;height:18px}
-.section-label{font-size:11px;color:var(--color-text-tertiary);text-align:center;letter-spacing:.06em;text-transform:uppercase;margin:4px 0 8px}
-.drawer{overflow:hidden;transition:max-height .4s ease,opacity .4s ease;max-height:0;opacity:0}
-.drawer.open{max-height:900px;opacity:1}
-.drawer-inner{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);margin-top:8px;padding:12px 14px}
-.drawer-inner h4{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em}
-.sub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:6px}
-.sub-item{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-secondary)}
-.chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:5px}
-.chapter-pill{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:20px;padding:4px 10px;font-size:11px;color:var(--color-text-secondary);text-align:center}
-.chevron{display:inline-block;transition:transform .25s;font-size:10px;margin-left:4px;color:var(--color-text-tertiary)}
-.chevron.open{transform:rotate(180deg)}
-.cpac-note{font-size:10px;color:var(--color-text-tertiary);font-style:italic;margin-top:3px}
-.people-viz{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px 20px;margin:0 0 12px}
-.people-viz-title{font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px;text-align:center}
-.figures-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin-bottom:14px}
-.fig-group{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:72px;max-width:100px}
-.fig-label{font-size:10px;color:var(--color-text-secondary);text-align:center;line-height:1.3}
-.fig-icons{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;max-width:96px}
-.fig-icon{width:12px;height:18px;flex-shrink:0}
-.fig-count{font-size:18px;font-weight:500;color:var(--color-text-primary);line-height:1}
-.people-total-row{border-top:0.5px solid var(--color-border-tertiary);padding-top:10px;display:flex;justify-content:center;align-items:baseline;gap:8px;flex-wrap:wrap}
-.total-number{font-size:28px;font-weight:500;color:var(--color-text-primary);line-height:1}
-.total-label{font-size:12px;color:var(--color-text-secondary);max-width:280px;line-height:1.4}
-.membership-banner{display:flex;align-items:stretch;justify-content:center;gap:0;margin:0 auto 10px;max-width:580px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
-.mb-label{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;padding:10px 16px;border-right:0.5px solid var(--color-border-tertiary);white-space:nowrap;background:var(--color-background-secondary);min-width:100px}
-.mb-label-title{font-size:12px;font-weight:500;color:var(--color-text-primary)}
-.mb-label-count{font-size:20px;font-weight:500;color:var(--color-text-primary);line-height:1}
-.mb-label-sub{font-size:10px;color:var(--color-text-secondary)}
-.mb-items{display:flex;flex-wrap:wrap;gap:8px;padding:10px 16px;align-items:center}
-.mb-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary);white-space:nowrap}
-.mb-divider{width:0.5px;height:16px;background:var(--color-border-tertiary);flex-shrink:0}
-.headline-strip{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin:0 auto 14px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
-.headline-item{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 20px;border-right:0.5px solid var(--color-border-tertiary);flex:1;min-width:120px}
-.headline-item:last-child{border-right:none}
-.headline-num{font-size:26px;font-weight:500;color:var(--color-text-primary);line-height:1;margin-bottom:3px}
-.headline-label{font-size:11px;color:var(--color-text-secondary);text-align:center;line-height:1.3}
-.org-title{font-size:18px;font-weight:500;color:var(--color-text-primary);text-align:center;margin:0 0 4px}
-.org-subtitle{font-size:12px;color:var(--color-text-secondary);text-align:center;margin:0 0 14px}
-.color-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-bottom:12px;font-size:11px;color:var(--color-text-secondary)}
-.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;flex-shrink:0}
-.legend-item{display:flex;align-items:center}
+.wrap{padding:1rem 0}
+.metric-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px}
+.metric-label{font-size:11px;color:var(--color-text-secondary);margin:0 0 4px}
+.metric-value{font-size:20px;font-weight:500;color:var(--color-text-primary);margin:0}
+.metric-sub{font-size:11px;color:var(--color-text-tertiary);margin:2px 0 0}
+.metric.green .metric-value{color:#0F6E56}
+.metric.amber .metric-value{color:#854F0B}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:10px;font-size:11px;color:var(--color-text-secondary)}
+.leg{display:flex;align-items:center;gap:5px}
+.leg-sq{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.leg-circle{width:10px;height:10px;border-radius:50%;border:2px solid;flex-shrink:0}
+.section-title{font-size:11px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px}
+.chart-note{font-size:11px;color:var(--color-text-tertiary);text-align:center;margin-top:8px;font-style:italic}
 </style>
 
-<div class="org">
-  <p class="org-title">ARLIS/NA 2026 Org Chart</p>
-  <p class="org-subtitle">Art Libraries Society of North America · as of June 17, 2026</p>
-
-  <div class="headline-strip">
-    <div class="headline-item"><span class="headline-num">834</span><span class="headline-label">members</span></div>
-    <div class="headline-item"><span class="headline-num">250</span><span class="headline-label">volunteers</span></div>
-    <div class="headline-item"><span class="headline-num">17</span><span class="headline-label">chapters</span></div>
-    <div class="headline-item"><span class="headline-num">1</span><span class="headline-label">annual conference</span></div>
-  </div>
-
-  <div class="membership-banner">
-    <div class="mb-label">
-      <span class="mb-label-title">Membership</span>
-      <span class="mb-label-count">834</span>
-      <span class="mb-label-sub">members</span>
+<div class="wrap">
+  <div class="metric-row">
+    <div class="metric">
+      <p class="metric-label">First conference (1972)</p>
+      <p class="metric-value">10</p>
+      <p class="metric-sub">attendees, Chicago</p>
     </div>
-    <div class="mb-items">
-      <div class="mb-item"><span class="badge-elected">elected</span> voted in by membership</div>
-      <div class="mb-divider"></div>
-      <div class="mb-item"><span class="badge-appointed">appointed</span> appointed by the board</div>
-      <div class="mb-divider"></div>
-      <div class="mb-item"><span class="badge-continuity">continuity</span> serves by succession</div>
+    <div class="metric green">
+      <p class="metric-label">Peak attendance</p>
+      <p class="metric-value">908</p>
+      <p class="metric-sub">2018, New York City</p>
     </div>
-  </div>
-
-  <div style="display:flex;justify-content:center;margin-bottom:0">
-    <div class="role-card president" style="min-width:200px;max-width:280px" onclick="toggle('president')">
-      <div class="rtitle-row"><span class="rtitle">President</span><span class="badge-elected">elected</span><span class="chevron" id="chev-president">▾</span></div>
-      <p class="rsub">Leadership, awards &amp; appointments</p>
-      <div class="stats"><span class="stat purple">6 committees</span><span class="people-badge">~73 people</span></div>
-      <div class="drawer" id="drawer-president">
-        <div class="drawer-inner">
-          <h4>Committees &amp; members</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Leadership Development<br><span style="font-size:11px;color:var(--color-text-tertiary)">7 people incl. chair</span></div>
-            <div class="sub-item">Awards<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair + 7 sub-chairs (11 people)</span></div>
-            <div class="sub-item">CPAC — current conference<br><span style="font-size:11px;color:var(--color-text-tertiary)">4 co-chairs, 26 people</span><p class="cpac-note">Conference Planning Advisory Committee</p></div>
-            <div class="sub-item">CPAC — next conference<br><span style="font-size:11px;color:var(--color-text-tertiary)">14 people total</span><p class="cpac-note">Conference Planning Advisory Committee</p></div>
-            <div class="sub-item">Anti-racism<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 5 members</span></div>
-            <div class="sub-item">Appointments<br><span style="font-size:11px;color:var(--color-text-tertiary)">e.g. affiliates</span></div>
-          </div>
-        </div>
-      </div>
+    <div class="metric green">
+      <p class="metric-label">Peak membership</p>
+      <p class="metric-value">1,391</p>
+      <p class="metric-sub">1993, San Francisco</p>
+    </div>
+    <div class="metric amber">
+      <p class="metric-label">Current membership</p>
+      <p class="metric-value">834</p>
+      <p class="metric-sub">as of 6/18/2026</p>
+    </div>
+    <div class="metric green">
+      <p class="metric-label">2026 Montréal</p>
+      <p class="metric-value">467</p>
+      <p class="metric-sub">final</p>
     </div>
   </div>
 
-  <div class="vline"></div>
-  <div class="hline" style="width:78%"></div>
-  <div class="section-label">Executive officers</div>
-
-  <div class="row">
-    <div class="role-card vp" style="min-width:190px;max-width:240px" onclick="toggle('vp')">
-      <div class="rtitle-row"><span class="rtitle">Vice President</span><span class="badge-elected">elected</span><span class="chevron" id="chev-vp">▾</span></div>
-      <p class="rsub">Divisions, sections &amp; SIGs</p>
-      <div class="stats"><span class="stat teal">35 groups · 58 direct contacts</span><span class="people-badge">~245 people</span></div>
-      <div class="drawer" id="drawer-vp">
-        <div class="drawer-inner">
-          <h4>35 groups — 58 direct moderators &amp; coordinators</h4>
-          <div class="sub-grid" style="margin-bottom:10px">
-            <div class="sub-item">Strategic Planning<br><span style="font-size:11px;color:var(--color-text-tertiary)">2 people</span></div>
-            <div class="sub-item">4 Divisions<br><span style="font-size:11px;color:var(--color-text-tertiary)">moderators</span></div>
-            <div class="sub-item">4 Sections<br><span style="font-size:11px;color:var(--color-text-tertiary)">moderators</span></div>
-            <div class="sub-item">26 SIGs<br><span style="font-size:11px;color:var(--color-text-tertiary)">coordinators</span></div>
-          </div>
-          <div style="font-size:11px;color:var(--color-text-secondary);background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;margin-bottom:10px">
-            58 direct contacts represent an estimated <strong>~245 individuals</strong> across all groups
-          </div>
-          <h4>Also appoints</h4>
-          <div class="sub-grid">
-            <div class="sub-item">13 Committee chairs/co-chairs<br><span style="font-size:11px;color:var(--color-text-tertiary)">up to 26 people</span></div>
-            <div class="sub-item">19 Affiliates<br><span style="font-size:11px;color:var(--color-text-tertiary)">for year of presidency</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card president" style="min-width:155px;max-width:200px" onclick="toggle('pastpres')">
-      <div class="rtitle-row"><span class="rtitle">Past President</span><span class="badge-continuity">continuity</span><span class="chevron" id="chev-pastpres">▾</span></div>
-      <p class="rsub">Assures continuity &amp; grants</p>
-      <div class="stats"><span class="stat purple">2 committees</span><span class="people-badge">~10 people</span></div>
-      <div class="drawer" id="drawer-pastpres">
-        <div class="drawer-inner">
-          <h4>Committees</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Grants</div>
-            <div class="sub-item">Development (member)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card officer" style="min-width:155px;max-width:200px" onclick="toggle('treasurer')">
-      <div class="rtitle-row"><span class="rtitle">Treasurer</span><span class="badge-elected">elected</span><span class="chevron" id="chev-treasurer">▾</span></div>
-      <p class="rsub">Finance &amp; development</p>
-      <div class="stats"><span class="stat blue">2 committees</span><span class="people-badge">~18 people</span></div>
-      <div class="drawer" id="drawer-treasurer">
-        <div class="drawer-inner">
-          <h4>Committees</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Finance Committee</div>
-            <div class="sub-item">Development Committee</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card officer" style="min-width:155px;max-width:200px" onclick="toggle('secretary')">
-      <div class="rtitle-row"><span class="rtitle">Secretary</span><span class="badge-elected">elected</span><span class="chevron" id="chev-secretary">▾</span></div>
-      <p class="rsub">Cataloging &amp; documentation</p>
-      <div class="stats"><span class="stat blue">2 committees</span><span class="people-badge">~18 people</span></div>
-      <div class="drawer" id="drawer-secretary">
-        <div class="drawer-inner">
-          <h4>Committees</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Cataloging Advisory</div>
-            <div class="sub-item">Documentation</div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <p class="section-title">Conference attendance &amp; membership — 1972 to 2026</p>
+  <div class="legend">
+    <div class="leg"><div class="leg-sq" style="background:#0F6E56"></div>Conference attendance</div>
+    <div class="leg"><div class="leg-sq" style="background:#534AB7"></div>Membership</div>
+    <div class="leg"><div class="leg-circle" style="border-color:#D85A30;background:transparent"></div>Averaged from EB reports / projected</div>
   </div>
-
-  <div class="people-viz">
-    <p class="people-viz-title">People engaged across the organization</p>
-    <div class="color-legend">
-      <div class="legend-item"><span class="legend-dot" style="background:#534AB7"></span>President &amp; Past President</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#0F6E56"></span>Vice President groups</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#378ADD"></span>Treasurer &amp; Secretary</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#BA7517"></span>Liaisons</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#D85A30"></span>Editorial Director</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#888780"></span>Management</div>
-    </div>
-    <div class="figures-wrap" id="figures-wrap"></div>
-    <div class="people-total-row">
-      <span class="total-number">250</span>
-      <span class="total-label">volunteers engaged across the organization<br><span style="font-size:11px;color:var(--color-text-tertiary)">plus 704 chapter members &amp; ~245 individuals through VP divisions, sections &amp; SIGs</span></span>
-    </div>
+  <div style="position:relative;width:100%;height:380px">
+    <canvas id="chart-history" role="img" aria-label="Line chart showing ARLIS/NA conference attendance and membership from 1972 to 2026. Attendance figures for 1976–1978, 1981, 1999–2001, and 2004–2005 are averaged from Executive Board reports. 2020 was cancelled. 2021 and 2025 were virtual."></canvas>
   </div>
-
-  <div class="hline" style="width:90%"></div>
-  <div class="section-label">Liaisons &amp; directors</div>
-
-  <div class="row">
-    <div class="role-card liaison" style="min-width:150px;max-width:195px" onclick="toggle('education')">
-      <div class="rtitle-row"><span class="rtitle">Education Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-education">▾</span></div>
-      <p class="rsub">Professional development</p>
-      <div class="stats"><span class="stat amber">3 committees</span><span class="people-badge">~6 people</span></div>
-      <div class="drawer" id="drawer-education">
-        <div class="drawer-inner">
-          <h4>Committees &amp; subcommittees</h4>
-          <div class="sub-grid">
-            <div class="sub-item">SEI</div>
-            <div class="sub-item">Professional Development</div>
-            <div class="sub-item">Mentoring Subcommittee</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card liaison" style="min-width:150px;max-width:195px" onclick="toggle('advancement')">
-      <div class="rtitle-row"><span class="rtitle">Advancement Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-advancement">▾</span></div>
-      <p class="rsub">Diversity &amp; membership</p>
-      <div class="stats"><span class="stat amber">2 committees</span><span class="people-badge">~13 people</span></div>
-      <div class="drawer" id="drawer-advancement">
-        <div class="drawer-inner">
-          <h4>Committees</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Diversity &amp; Inclusion<br><span style="font-size:11px;color:var(--color-text-tertiary)">2 chairs, 5 members</span></div>
-            <div class="sub-item">Membership<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 5 members</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card liaison" style="min-width:150px;max-width:195px" onclick="toggle('canadian')">
-      <div class="rtitle-row"><span class="rtitle">Canadian Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-canadian">▾</span></div>
-      <p class="rsub">Policy &amp; international</p>
-      <div class="stats"><span class="stat amber">3 committees</span><span class="people-badge">~19 people</span></div>
-      <div class="drawer" id="drawer-canadian">
-        <div class="drawer-inner">
-          <h4>Committees</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Advocacy &amp; Public Policy<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 4 members</span></div>
-            <div class="sub-item">International Relations<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 7 members</span></div>
-            <div class="sub-item">Melva Dwyer Award<br><span style="font-size:11px;color:var(--color-text-tertiary)">1 chair, 5 members</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card editorial" style="min-width:150px;max-width:195px" onclick="toggle('editorial')">
-      <div class="rtitle-row"><span class="rtitle">Editorial Director</span><span class="badge-appointed">appointed</span><span class="chevron" id="chev-editorial">▾</span></div>
-      <p class="rsub">Publications &amp; reviews</p>
-      <div class="stats"><span class="stat coral">9 publications</span><span class="people-badge">~19 people</span></div>
-      <div class="drawer" id="drawer-editorial">
-        <div class="drawer-inner">
-          <h4>Publications</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Editorial Board</div>
-            <div class="sub-item">Art Documentation</div>
-            <div class="sub-item">ARLIS/NA Reviews</div>
-            <div class="sub-item">Digital Art History Directory</div>
-            <div class="sub-item">Library Exhibitions Review</div>
-            <div class="sub-item">Multimedia &amp; Technology Reviews</div>
-            <div class="sub-item">Notable Graphic Novels Review</div>
-            <div class="sub-item">ARLIS-L</div>
-            <div class="sub-item">ARLIS/NA Commons</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="role-card liaison" style="min-width:160px;max-width:210px" onclick="toggle('chapters')">
-      <div class="rtitle-row"><span class="rtitle">Chapters Liaison</span><span class="badge-elected">elected</span><span class="chevron" id="chev-chapters">▾</span></div>
-      <p class="rsub">17 chapters + annual meetings</p>
-      <div class="stats"><span class="stat amber">17 chapter chairs</span><span class="people-badge">704 members</span></div>
-      <div class="drawer" id="drawer-chapters">
-        <div class="drawer-inner">
-          <h4>All 17 chapters</h4>
-          <div class="chapter-grid">
-            <div class="chapter-pill">Canada</div><div class="chapter-pill">MOQ</div>
-            <div class="chapter-pill">Ontario</div><div class="chapter-pill">Northwest</div>
-            <div class="chapter-pill">N. California</div><div class="chapter-pill">S. California</div>
-            <div class="chapter-pill">Mountain West</div><div class="chapter-pill">Central Plains</div>
-            <div class="chapter-pill">Mid-States</div><div class="chapter-pill">Ohio Valley</div>
-            <div class="chapter-pill">Twin Cities</div><div class="chapter-pill">New England</div>
-            <div class="chapter-pill">New York</div><div class="chapter-pill">Upstate New York</div>
-            <div class="chapter-pill">Mid-Atlantic</div><div class="chapter-pill">Southeast</div>
-            <div class="chapter-pill">Texas-Mexico</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hline" style="width:28%"></div>
-  <div class="section-label">Management</div>
-  <div style="display:flex;justify-content:center">
-    <div class="role-card mgmt" style="min-width:200px;max-width:280px" onclick="toggle('mgmt')">
-      <div class="rtitle-row"><span class="rtitle">Management</span><span class="chevron" id="chev-mgmt">▾</span></div>
-      <p class="rsub">Barcami Lane, Inc. — contracted management</p>
-      <div class="stats"><span class="stat gray">4 staff</span><span class="people-badge">1,900 hrs/yr</span></div>
-      <div class="drawer" id="drawer-mgmt">
-        <div class="drawer-inner">
-          <h4>Staff</h4>
-          <div class="sub-grid">
-            <div class="sub-item">Amy Stark</div>
-            <div class="sub-item">Megan Brouwer</div>
-            <div class="sub-item">Emily Clifford</div>
-            <div class="sub-item">LeighAnn Sciacca</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <p class="chart-note">Open circles = averaged figures · 1976–1978, 1981 &amp; 1999–2001, 2004–2005 attendance averaged from EB reports · 2020 cancelled · 2021 virtual · 2025 virtual · 2026 Montreal final</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const groups = [
-  { label: 'President committees', count: 73, color: '#534AB7', approx: true },
-  { label: 'VP — direct contacts', count: 58, color: '#0F6E56', note: '~245 individuals across all groups', approx: false },
-  { label: 'Past President', count: 10, color: '#534AB7', approx: true },
-  { label: 'Treasurer', count: 18, color: '#378ADD', approx: true },
-  { label: 'Secretary', count: 18, color: '#378ADD', approx: true },
-  { label: 'Education Liaison', count: 6, color: '#BA7517', approx: true },
-  { label: 'Advancement Liaison', count: 13, color: '#BA7517', approx: true },
-  { label: 'Canadian Liaison', count: 19, color: '#BA7517', approx: true },
-  { label: 'Editorial Director', count: 19, color: '#D85A30', approx: true },
-  { label: 'Chapters Liaison', count: 17, color: '#BA7517', note: '+ 704 chapter members', approx: false },
-  { label: 'Management', count: 4, color: '#888780', approx: false },
+const data = [
+  { year: 1972, city: 'Chicago',             attendance: 10,  members: 10,   estAtt: false, estMem: false, proj: false, dates: 'Chicago, Jun 25–Jul 1, 1972' },
+  { year: 1973, city: 'New York City',        attendance: 80,  members: 284,  estAtt: false, estMem: false, proj: false, dates: 'New York City, Jan 23, 1973' },
+  { year: 1974, city: 'Detroit',              attendance: 185, members: 650,  estAtt: false, estMem: false, proj: false, dates: 'Detroit, Jan 21–23, 1974' },
+  { year: 1975, city: 'Washington, DC',       attendance: 277, members: 900,  estAtt: false, estMem: false, proj: false, dates: 'Washington, DC, Jan 19–25, 1975' },
+  { year: 1976, city: 'Chicago',              attendance: 192, members: 900,  estAtt: true,  estMem: false, proj: false, dates: 'Chicago, Jan 27–Feb 3, 1976' },
+  { year: 1977, city: 'Los Angeles',          attendance: 240, members: 950,  estAtt: true,  estMem: false, proj: false, dates: 'Los Angeles, Jan 28–Feb 2, 1977' },
+  { year: 1978, city: 'New York City',        attendance: 341, members: 1000, estAtt: true,  estMem: false, proj: false, dates: 'New York City, Jan 20–27, 1978' },
+  { year: 1979, city: 'Toronto',              attendance: 270, members: 1000, estAtt: false, estMem: false, proj: false, dates: 'Toronto, Mar 21–25, 1979' },
+  { year: 1980, city: 'New Orleans',          attendance: 234, members: 1051, estAtt: false, estMem: false, proj: false, dates: 'New Orleans, Jan 26–30, 1980' },
+  { year: 1981, city: 'San Francisco',        attendance: 300, members: 1071, estAtt: true,  estMem: false, proj: false, dates: 'San Francisco, Feb 20–26, 1981' },
+  { year: 1982, city: 'Boston',               attendance: 382, members: 1096, estAtt: false, estMem: false, proj: false, dates: 'Boston, Feb 20–24, 1982' },
+  { year: 1983, city: 'Philadelphia',         attendance: 386, members: 1166, estAtt: false, estMem: false, proj: false, dates: 'Philadelphia, Feb 12–17, 1983' },
+  { year: 1984, city: 'Cleveland',            attendance: 320, members: 1197, estAtt: false, estMem: false, proj: false, dates: 'Cleveland, Feb 18–22, 1984' },
+  { year: 1985, city: 'Los Angeles',          attendance: 377, members: 1261, estAtt: false, estMem: false, proj: false, dates: 'Los Angeles, Feb 8–14, 1985' },
+  { year: 1986, city: 'New York City',        attendance: 535, members: 1228, estAtt: false, estMem: false, proj: false, dates: 'New York City, Feb 6–13, 1986' },
+  { year: 1987, city: 'Washington, DC',       attendance: 427, members: 1276, estAtt: false, estMem: false, proj: false, dates: 'Washington, DC, Feb 13–19, 1987' },
+  { year: 1988, city: 'Dallas',               attendance: 450, members: 1308, estAtt: false, estMem: false, proj: false, dates: 'Dallas, Feb 4–11, 1988' },
+  { year: 1989, city: 'Phoenix',              attendance: 424, members: 1308, estAtt: false, estMem: false, proj: false, dates: 'Phoenix, Mar 22–30, 1989' },
+  { year: 1990, city: 'New York City',        attendance: 620, members: 1339, estAtt: false, estMem: false, proj: false, dates: 'New York City, Feb 8–15, 1990' },
+  { year: 1991, city: 'Kansas City',          attendance: 350, members: 1329, estAtt: false, estMem: false, proj: false, dates: 'Kansas City, Mar 7–14, 1991' },
+  { year: 1992, city: 'Chicago',              attendance: 450, members: 1368, estAtt: false, estMem: false, proj: false, dates: 'Chicago, Feb 6–13, 1992' },
+  { year: 1993, city: 'San Francisco',        attendance: 500, members: 1391, estAtt: false, estMem: false, proj: false, dates: 'San Francisco, Jan 28–Feb 3, 1993' },
+  { year: 1994, city: 'Providence, RI',       attendance: 500, members: 962,  estAtt: false, estMem: false, proj: false, dates: 'Providence, Feb 11–16, 1994' },
+  { year: 1995, city: 'Montréal',             attendance: 588, members: 1025, estAtt: false, estMem: false, proj: false, dates: 'Montréal, Mar 10–15, 1995' },
+  { year: 1996, city: 'Miami Beach',          attendance: 806, members: 1179, estAtt: false, estMem: false, proj: false, dates: 'Miami Beach, Apr 26–May 1, 1996' },
+  { year: 1997, city: 'San Antonio',          attendance: 386, members: 1131, estAtt: false, estMem: false, proj: false, dates: 'San Antonio, Apr 4–9, 1997' },
+  { year: 1998, city: 'Philadelphia',         attendance: 480, members: 1139, estAtt: false, estMem: false, proj: false, dates: 'Philadelphia, Mar 5–12, 1998' },
+  { year: 1999, city: 'Vancouver',            attendance: 480, members: 1047, estAtt: true,  estMem: false, proj: false, dates: 'Vancouver, Mar 25–31, 1999' },
+  { year: 2000, city: 'Pittsburgh',           attendance: 480, members: 1105, estAtt: true,  estMem: false, proj: false, dates: 'Pittsburgh, Mar 16–22, 2000' },
+  { year: 2001, city: 'Los Angeles',          attendance: 480, members: 1098, estAtt: true,  estMem: false, proj: false, dates: 'Los Angeles, Mar 29–Apr 4, 2001' },
+  { year: 2002, city: 'St. Louis',            attendance: 580, members: 1099, estAtt: false, estMem: false, proj: false, dates: 'St. Louis, Mar 20–26, 2002' },
+  { year: 2003, city: 'Baltimore',            attendance: 515, members: 1049, estAtt: false, estMem: false, proj: false, dates: 'Baltimore, Mar 20–26, 2003' },
+  { year: 2004, city: 'New York City',        attendance: 515, members: 889,  estAtt: true,  estMem: false, proj: false, dates: 'New York City, Apr 15–20, 2004' },
+  { year: 2005, city: 'Houston',              attendance: 515, members: 889,  estAtt: true,  estMem: false, proj: false, dates: 'Houston, Apr 1–5, 2005' },
+  { year: 2006, city: 'Banff',                attendance: 793, members: 1029, estAtt: false, estMem: false, proj: false, dates: 'Banff, May 5–9, 2006' },
+  { year: 2007, city: 'Atlanta',              attendance: 501, members: 1111, estAtt: false, estMem: false, proj: false, dates: 'Atlanta, Apr 26–30, 2007' },
+  { year: 2008, city: 'Denver',               attendance: 814, members: 1288, estAtt: false, estMem: false, proj: false, dates: 'Denver, May 1–5, 2008' },
+  { year: 2009, city: 'Indianapolis',         attendance: 500, members: 1122, estAtt: false, estMem: false, proj: false, dates: 'Indianapolis, Apr 16–21, 2009' },
+  { year: 2010, city: 'Boston',               attendance: 596, members: 1189, estAtt: false, estMem: false, proj: false, dates: 'Boston, Apr 23–26, 2010' },
+  { year: 2011, city: 'Minneapolis',          attendance: 549, members: 824,  estAtt: false, estMem: false, proj: false, dates: 'Minneapolis, Mar 24–28, 2011' },
+  { year: 2012, city: 'Toronto',              attendance: 554, members: 777,  estAtt: false, estMem: false, proj: false, dates: 'Toronto, Mar 29–Apr 2, 2012' },
+  { year: 2013, city: 'Pasadena',             attendance: 581, members: 788,  estAtt: false, estMem: false, proj: false, dates: 'Pasadena, Apr 25–29, 2013' },
+  { year: 2014, city: 'Washington, DC',       attendance: 807, members: 999,  estAtt: false, estMem: false, proj: false, dates: 'Washington, DC, May 1–5, 2014' },
+  { year: 2015, city: 'Fort Worth',           attendance: 501, members: 1111, estAtt: false, estMem: false, proj: false, dates: 'Fort Worth, Mar 19–23, 2015' },
+  { year: 2016, city: 'Seattle',              attendance: 838, members: 1266, estAtt: false, estMem: false, proj: false, dates: 'Seattle, Mar 8–12, 2016' },
+  { year: 2017, city: 'New Orleans',          attendance: 549, members: 1122, estAtt: false, estMem: false, proj: false, dates: 'New Orleans, Feb 5–9, 2017' },
+  { year: 2018, city: 'New York City',        attendance: 908, members: 1189, estAtt: false, estMem: false, proj: false, dates: 'New York City, Feb 25–Mar 1, 2018' },
+  { year: 2019, city: 'Salt Lake City',       attendance: 455, members: 824,  estAtt: false, estMem: false, proj: false, dates: 'Salt Lake City, Mar 26–30, 2019' },
+  { year: 2020, city: 'Cancelled (St. Louis)',attendance: 0,   members: 934,  estAtt: false, estMem: false, proj: false, dates: 'Virtual, Jul 29–31, 2020' },
+  { year: 2021, city: 'Virtual',              attendance: 493, members: 827,  estAtt: false, estMem: false, proj: false, dates: 'Virtual, May 11–13, 2021' },
+  { year: 2022, city: 'Chicago',              attendance: 473, members: 980,  estAtt: false, estMem: false, proj: false, dates: 'Chicago, Apr 5–9, 2022' },
+  { year: 2023, city: 'Mexico City',          attendance: 518, members: 872,  estAtt: false, estMem: false, proj: false, dates: 'Mexico City, Apr 18–21, 2023' },
+  { year: 2024, city: 'Pittsburgh',           attendance: 486, members: 799,  estAtt: false, estMem: false, proj: false, dates: 'Pittsburgh, Apr 2–5, 2024' },
+  { year: 2025, city: 'Virtual',              attendance: 545, members: 801,  estAtt: false, estMem: false, proj: false, dates: 'Virtual, May 12–16, 2025' },
+  { year: 2026, city: 'Montréal',             attendance: 467, members: 834,  estAtt: false, estMem: false, proj: false, dates: 'Montréal, May 2–8, 2026' },
 ];
 
-function personSVG(color) {
-  return `<svg class="fig-icon" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="6" cy="4.5" r="3" fill="${color}" opacity="0.85"/>
-    <path d="M1 16c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="${color}" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.85"/>
-  </svg>`;
-}
+const labels = data.map(d => d.year);
+const attEst = data.map(d => d.estAtt || d.proj);
+const memEst = data.map(d => d.estMem || d.proj);
 
-function buildViz() {
-  const wrap = document.getElementById('figures-wrap');
-  groups.forEach(g => {
-    const grp = document.createElement('div');
-    grp.className = 'fig-group';
-    const iconsDiv = document.createElement('div');
-    iconsDiv.className = 'fig-icons';
-    const display = Math.min(g.count, 20);
-    for (let i = 0; i < display; i++) iconsDiv.innerHTML += personSVG(g.color);
-    if (g.count > 20) {
-      const more = document.createElement('div');
-      more.style.cssText = 'font-size:10px;color:var(--color-text-tertiary);width:100%;text-align:center;margin-top:1px';
-      more.textContent = '+' + (g.count - 20) + ' more';
-      iconsDiv.appendChild(more);
+new Chart(document.getElementById('chart-history'), {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Conference attendance',
+        data: data.map(d => d.attendance),
+        borderColor: '#0F6E56',
+        backgroundColor: 'rgba(15,110,86,0.08)',
+        fill: false,
+        tension: 0.3,
+        borderWidth: 2,
+        pointRadius: 4,
+        pointBackgroundColor: data.map((d,i) => attEst[i] ? 'transparent' : '#0F6E56'),
+        pointBorderColor: data.map((d,i) => attEst[i] ? '#D85A30' : '#0F6E56'),
+        pointBorderWidth: data.map((d,i) => attEst[i] ? 2 : 0),
+        pointHoverRadius: 6,
+      },
+      {
+        label: 'Membership',
+        data: data.map(d => d.members),
+        borderColor: '#534AB7',
+        backgroundColor: 'rgba(83,74,183,0.06)',
+        fill: false,
+        tension: 0.3,
+        borderWidth: 2,
+        pointRadius: 4,
+        pointBackgroundColor: data.map((d,i) => memEst[i] ? 'transparent' : '#534AB7'),
+        pointBorderColor: data.map((d,i) => memEst[i] ? '#D85A30' : '#534AB7'),
+        pointBorderWidth: data.map((d,i) => memEst[i] ? 2 : 0),
+        pointHoverRadius: 6,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          title: ctx => {
+            const i = ctx[0].dataIndex;
+            const d = data[i];
+            return d.dates || (d.year + ' — ' + d.city);
+          },
+          label: ctx => {
+            const i = ctx.dataIndex;
+            const d = data[i];
+            if (ctx.datasetIndex === 0) {
+              const flag = d.proj ? ' (final)' : d.estAtt ? ' (averaged from EB reports)' : '';
+              return ' Attendance: ' + ctx.parsed.y + flag;
+            } else {
+              const flag = d.proj ? ' (final)' : '';
+              return ' Members: ' + ctx.parsed.y + flag;
+            }
+          },
+          afterBody: ctx => {
+            const i = ctx[0].dataIndex;
+            const d = data[i];
+            if (d.attendance > 0 && d.members > 0) {
+              const pct = Math.round(d.attendance / d.members * 100);
+              return ['', ' Attendance rate: ' + pct + '% of members'];
+            }
+            return [];
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: { size: 10 },
+          color: '#9ca3af',
+          maxRotation: 45,
+          callback: (val, i) => {
+            const yr = data[i].year;
+            return yr % 5 === 0 || yr === 1972 || yr === 2026 ? yr : '';
+          }
+        },
+        grid: { display: false }
+      },
+      y: {
+        ticks: { font: { size: 11 }, color: '#9ca3af' },
+        grid: { color: 'rgba(128,128,128,0.1)' },
+        min: 0
+      }
     }
-    const countEl = document.createElement('div');
-    countEl.className = 'fig-count';
-    countEl.textContent = (g.approx ? '~' : '') + g.count;
-    const labelEl = document.createElement('div');
-    labelEl.className = 'fig-label';
-    labelEl.textContent = g.label;
-    grp.appendChild(iconsDiv);
-    grp.appendChild(countEl);
-    grp.appendChild(labelEl);
-    if (g.note) {
-      const noteEl = document.createElement('div');
-      noteEl.style.cssText = 'font-size:10px;color:var(--color-text-tertiary);text-align:center;line-height:1.3;margin-top:1px';
-      noteEl.textContent = g.note;
-      grp.appendChild(noteEl);
-    }
-    wrap.appendChild(grp);
-  });
-}
-
-function toggle(id) {
-  const drawer = document.getElementById('drawer-' + id);
-  const chev = document.getElementById('chev-' + id);
-  const isOpen = drawer.classList.contains('open');
-  drawer.classList.toggle('open', !isOpen);
-  chev.classList.toggle('open', !isOpen);
-}
-
-buildViz();
+  }
+});
 </script>
